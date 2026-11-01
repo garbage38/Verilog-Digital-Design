@@ -110,13 +110,16 @@ $$
 
 ### 2. Half Adder Circuit Diagram
 
-<h3 align="center">Half Adder Circuit Diagram</h3>
+A Half Adder consists of an XOR gate for the Sum output and an AND gate for the Carry output.
 
-<p align="center">
-  <img src="images/half_adder.png"
-       alt="Half Adder Circuit Diagram"
-       width="500">
-</p>
+```mermaid
+flowchart LR
+    A((A)) --> XOR[XOR Gate]
+    B((B)) --> XOR
+    A --> AND[AND Gate]
+    B --> AND
+    XOR --> SUM((Sum))
+    AND --> CARRY((Carry))
 
 ### 3. Write the Verilog RTL Code
 
