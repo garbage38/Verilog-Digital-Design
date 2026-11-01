@@ -91,7 +91,6 @@ $$
 $$
 Carry = A \cdot B
 $$
-
 ### 2. Half Adder Circuit Diagram
 
 A Half Adder consists of an XOR gate for the Sum output and an AND gate for the Carry output.
@@ -104,6 +103,7 @@ flowchart LR
     B --> AND
     XOR --> SUM((Sum))
     AND --> CARRY((Carry))
+```
 
 ### 3. Write the Verilog RTL Code
 
@@ -122,6 +122,7 @@ module half_adder (
 
 endmodule
 ```
+
 
 **Explanation:**
 
