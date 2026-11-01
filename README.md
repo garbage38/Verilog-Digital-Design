@@ -110,8 +110,12 @@ $$
 
 ### 2. Half Adder Circuit Diagram
 
+<h3 align="center">Half Adder Circuit Diagram</h3>
+
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Half_Adder.svg/512px-Half_Adder.svg.png" alt="Half Adder Circuit Diagram" width="450">
+  <img src="images/half_adder.png"
+       alt="Half Adder Circuit Diagram"
+       width="500">
 </p>
 
 ### 3. Write the Verilog RTL Code
