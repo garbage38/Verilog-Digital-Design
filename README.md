@@ -53,7 +53,21 @@ Verilog provides an efficient way to describe, simulate, verify, and synthesize 
 - **Synthesis:** Convert RTL descriptions into gate-level hardware.
 - **Verification:** Identify design errors using testbenches.
 - **FPGA and ASIC Development:** Implement designs on real hardware.
+🔹 Digital Design Flow
 
+The typical digital design process involves writing RTL code, verifying its behavior, and synthesizing it into hardware.
+
+flowchart TD
+    A["Circuit Specification"] --> B["Logic Design"]
+    B --> C["Write Verilog RTL"]
+    C --> D["Create Testbench"]
+    D --> E["RTL Simulation"]
+    E --> F{"Correct Output?"}
+    F -- No --> C
+    F -- Yes --> G["Logic Synthesis"]
+    G --> H["Gate-Level Netlist"]
+    H --> I["FPGA / ASIC Implementation"]
+    I --> J["Hardware Testing"]
 
 
 ### Design Steps
