@@ -1,127 +1,79 @@
+
 # Verilog Digital Design
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Language-Verilog-blue?style=for-the-badge" alt="Verilog">
-  <img src="https://img.shields.io/badge/Domain-Digital%20Design-orange?style=for-the-badge" alt="Digital Design">
-  <img src="https://img.shields.io/badge/RTL-Design-green?style=for-the-badge" alt="RTL Design">
-</p>
+A collection of digital circuits designed and implemented using **Verilog HDL**. This repository contains RTL designs, testbenches, simulation results, and examples for learning digital logic design and hardware description languages.
 
-<p align="center">
-  <b>Designing, Simulating, and Understanding Digital Circuits Using Verilog HDL</b>
-</p>
+## What is Verilog?
 
----
+**Verilog** is a Hardware Description Language (HDL) used to describe, simulate, and implement digital electronic systems.
 
-## 📌 Introduction
+Unlike software programming languages, Verilog describes hardware components and their behavior. It is used to design digital circuits such as logic gates, multiplexers, adders, registers, counters, finite state machines, and processors.
 
-Welcome to **Verilog-Digital-Design**!
+## Why Verilog?
 
-This repository contains Verilog HDL implementations of fundamental digital circuits, starting from basic logic gates and combinational circuits to sequential circuits and advanced digital systems.
+Verilog is widely used in digital hardware design because it allows us to:
 
-The main objective is to understand how digital circuits can be described using Verilog, verified through simulation, and prepared for hardware implementation.
+- Describe digital circuits using a hardware description language.
+- Simulate and verify circuit behavior before implementation.
+- Design combinational and sequential logic.
+- Implement digital systems on FPGA and ASIC platforms.
+- Create reusable and modular hardware designs.
+- Verify designs using testbenches.
 
-## 🔹 What is Verilog?
+## Digital Design Flow
 
-**Verilog** is a Hardware Description Language (HDL) used to describe the structure and behavior of digital electronic circuits.
+The typical digital design flow using Verilog is:
 
-Unlike programming languages such as C or Python, which describe instructions executed by a processor, Verilog describes hardware components and their connections.
-
-Using Verilog, we can design:
-
-- Logic gates and Boolean expressions
-- Combinational circuits
-- Sequential circuits
-- Finite State Machines (FSMs)
-- Registers, counters, and memories
-- Processor datapaths and control units
-- Complex digital systems
-
-Verilog is widely used in digital hardware design, FPGA development, and ASIC design.
-
-## 🔹 Why is Verilog Needed?
-
-Modern digital systems contain millions or billions of transistors. Designing such systems manually using individual logic gates is difficult and time-consuming.
-
-Verilog provides an efficient way to describe, simulate, verify, and synthesize digital hardware.
-
-### Advantages of Verilog
-
-- **Hardware Abstraction:** Describe circuits at different levels of abstraction.
-- **Simulation:** Test circuit functionality before hardware implementation.
-- **Reusability:** Create modules that can be reused in larger designs.
-- **Scalability:** Design complex systems using smaller modules.
-- **Synthesis:** Convert RTL descriptions into gate-level hardware.
-- **Verification:** Identify design errors using testbenches.
-- **FPGA and ASIC Development:** Implement designs on real hardware.
-🔹 Digital Design Flow
-
-The typical digital design process involves writing RTL code, verifying its behavior, and synthesizing it into hardware.
-
+```mermaid
 flowchart TD
-    A["Circuit Specification"] --> B["Logic Design"]
-    B --> C["Write Verilog RTL"]
-    C --> D["Create Testbench"]
-    D --> E["RTL Simulation"]
-    E --> F{"Correct Output?"}
-    F -- No --> C
-    F -- Yes --> G["Logic Synthesis"]
-    G --> H["Gate-Level Netlist"]
-    H --> I["FPGA / ASIC Implementation"]
-    I --> J["Hardware Testing"]
+    A[Design Specification] --> B[RTL Design using Verilog]
+    B --> C[Testbench Development]
+    C --> D[Functional Simulation]
+    D --> E{Simulation Passed?}
+    E -- No --> B
+    E -- Yes --> F[Synthesis]
+    F --> G[Implementation]
+    G --> H[FPGA or ASIC]
+```
 
+## Implementing a Digital Circuit Using Verilog
 
-### Design Steps
+A digital circuit can be implemented using the following steps:
 
-1. **Specification:** Understand the required functionality.
-2. **Logic Design:** Develop Boolean equations, truth tables, or state diagrams.
-3. **RTL Coding:** Describe the circuit using Verilog.
-4. **Testbench Development:** Generate inputs and check outputs.
-5. **Simulation:** Verify the design using a simulator.
-6. **Synthesis:** Convert RTL into a hardware netlist.
-7. **Implementation:** Map the design to an FPGA or ASIC.
-8. **Testing:** Verify the circuit on actual hardware.
+1. Understand the circuit specification.
+2. Identify the inputs and outputs.
+3. Write the Verilog RTL code.
+4. Create a testbench to verify the design.
+5. Simulate the design using a Verilog simulator.
+6. Check the simulation results.
+7. Synthesize and implement the design on hardware, if required.
 
-## 🔹 How to Implement a Circuit Using Verilog
+## Example: Half Adder
 
-Let's understand the complete process using a **Half Adder**.
+A **Half Adder** is a combinational circuit that adds two single-bit binary inputs.
 
-### 1. Understand the Circuit
-
-A Half Adder adds two 1-bit binary inputs and produces a Sum and Carry.
+### Truth Table
 
 | A | B | Sum | Carry |
-|---|---|---|---|
-| 0 | 0 | 0 | 0 |
-| 0 | 1 | 1 | 0 |
-| 1 | 0 | 1 | 0 |
-| 1 | 1 | 0 | 1 |
+|---|---|-----|-------|
+| 0 | 0 |  0  |   0   |
+| 0 | 1 |  1  |   0   |
+| 1 | 0 |  1  |   0   |
+| 1 | 1 |  0  |   1   |
 
-**Boolean Expressions:**
-
-$$
-Sum = A \oplus B
-$$
-
-$$
-Carry = A \cdot B
-$$
-### 2. Half Adder Circuit Diagram
-
-A Half Adder consists of an XOR gate for the Sum output and an AND gate for the Carry output.
+### Logic Diagram
 
 ```mermaid
 flowchart LR
-    A((A)) --> XOR[XOR Gate]
-    B((B)) --> XOR
+    A[A] --> XOR[XOR Gate]
+    B[B] --> XOR
     A --> AND[AND Gate]
     B --> AND
-    XOR --> SUM((Sum))
-    AND --> CARRY((Carry))
+    XOR --> SUM[Sum]
+    AND --> CARRY[Carry]
 ```
 
-### 3. Write the Verilog RTL Code
-
-Create a file named `half_adder.v`.
+### Verilog RTL Code
 
 ```verilog
 module half_adder (
@@ -137,20 +89,7 @@ module half_adder (
 endmodule
 ```
 
-
-**Explanation:**
-
-- `module` defines a hardware component.
-- `input` declares input signals.
-- `output` declares output signals.
-- `assign` describes continuous combinational logic.
-- `endmodule` marks the end of the module.
-
-### 4. Write a Testbench
-
-A testbench applies input combinations and verifies the circuit through simulation.
-
-Create `half_adder_tb.v`.
+### Testbench
 
 ```verilog
 `timescale 1ns/1ps
@@ -168,8 +107,8 @@ module half_adder_tb;
     );
 
     initial begin
-        $monitor("A=%b B=%b Sum=%b Carry=%b",
-                  a, b, sum, carry);
+        $dumpfile("half_adder.vcd");
+        $dumpvars(0, half_adder_tb);
 
         a = 0; b = 0; #10;
         a = 0; b = 1; #10;
@@ -182,7 +121,7 @@ module half_adder_tb;
 endmodule
 ```
 
-### 5. Simulate the Design
+### Simulation
 
 Using Icarus Verilog:
 
@@ -191,120 +130,60 @@ iverilog -o half_adder_sim half_adder.v half_adder_tb.v
 vvp half_adder_sim
 ```
 
-**Expected Output:**
+To view the waveform:
 
-```text
-A=0 B=0 Sum=0 Carry=0
-A=0 B=1 Sum=1 Carry=0
-A=1 B=0 Sum=1 Carry=0
-A=1 B=1 Sum=0 Carry=1
+```bash
+gtkwave half_adder.vcd
 ```
 
-The simulation results should match the truth table.
-
-### 6. Synthesize the Circuit
-
-After successful simulation, the Verilog RTL can be synthesized using tools such as:
-
-- Xilinx Vivado
-- Intel Quartus Prime
-- Yosys
-- Synopsys Design Compiler
-
-Synthesis converts the RTL description into a gate-level netlist representing the hardware implementation.
-
-## 🔹 Types of Verilog Modeling
-
-| Modeling Style | Description |
-|---|---|
-| Gate-Level | Describes circuits using logic gate primitives |
-| Dataflow | Uses Boolean expressions and `assign` statements |
-| Behavioral | Describes functionality using procedural blocks |
-| Structural | Connects multiple modules to form larger circuits |
-
-**Dataflow Example:**
-
-```verilog
-assign y = (a & b) | c;
-```
-
-**Behavioral Example:**
-
-```verilog
-always @(*) begin
-    y = (a & b) | c;
-end
-```
-
-## 🔹 Repository Contents
-
-This repository covers digital design concepts through practical Verilog implementations.
+## Repository Structure
 
 ```text
 Verilog-Digital-Design/
 │
-├── 01_half_adder/
-├── 02_full_adder/
-├── 03_multiplexer/
-├── 04_demultiplexer/
-├── 05_decoder/
-├── 06_encoder/
-├── 07_comparator/
-├── 08_ripple_carry_adder/
-├── 09_flip_flops/
-├── 10_registers/
-├── 11_counters/
-├── 12_fsm/
+├── 01_/
+├── 02_/
+├── 03_/
+├── 04_/
+├── 05_/
+├── 06_/
+├── 07_/
+├── 08_/
+├── 09_/
+├── 10_/
+├── 11_/
+├── 12_/
 │
 └── README.md
 ```
 
-*Update this structure according to the actual folders in the repository.*
+Each numbered folder contains the corresponding Verilog design, testbench, and related files.
 
-## 🔹 Tools Used
+## Tools Used
 
-| Tool | Purpose |
-|---|---|
-| Verilog HDL | Hardware description |
-| Icarus Verilog | RTL simulation |
-| GTKWave | Waveform visualization |
-| EDA Playground | Online Verilog simulation |
-| Xilinx Vivado | FPGA design and implementation |
-| Yosys | Open-source synthesis |
+- **Verilog HDL** — Hardware description
+- **Icarus Verilog** — RTL simulation
+- **GTKWave** — Waveform visualization
+- **EDA Playground** — Online Verilog simulation
+- **Git and GitHub** — Version control and project hosting
 
-## 🔹 Learning Objectives
+## Learning Objectives
 
-By working through this repository, you will learn to:
-
-- Understand the fundamentals of digital logic design.
-- Write Verilog RTL code.
-- Implement combinational and sequential circuits.
-- Develop testbenches for functional verification.
-- Analyze simulation waveforms.
-- Understand the RTL-to-hardware design flow.
+- Understand combinational and sequential digital circuits.
+- Develop RTL designs using Verilog.
+- Write testbenches for functional verification.
+- Simulate and analyze digital circuit behavior.
 - Build a foundation for FPGA and ASIC design.
 
-## 🔹 References
+## References
 
-- [Verilog HDL](https://en.wikipedia.org/wiki/Verilog)
+- [HDLBits](https://hdlbits.01xz.net/wiki/Main_Page)
 - [IEEE Verilog Standard](https://standards.ieee.org/standard/1364-2005.html)
-- [EDA Playground](https://www.edaplayground.com/)
-- [Icarus Verilog](https://github.com/steveicarus/iverilog)
+- [Icarus Verilog](https://iverilog.fandom.com/wiki/Main_Page)
 - [GTKWave](https://gtkwave.sourceforge.net/)
-- [Yosys Open Source Synthesis](https://yosyshq.net/yosys/)
-
-## 👨‍💻 Author
-
-**Nirmal Mandal**
-
-B.Tech in Computer Science and Engineering  
-M.Tech in System on Chip Design — IIT Palakkad
-
-- GitHub: [@garbage38](https://github.com/garbage38)
-- Repository: [Verilog-Digital-Design](https://github.com/garbage38/Verilog-Digital-Design)
 
 ---
 
-<p align="center">
-  <b>Learn Digital Design • Write RTL • Simulate • Synthesize • Build Hardware</b>
-</p>
+**Author:** Nirmal Mandal
+
+**Repository:** [Verilog-Digital-Design](https://github.com/garbage38/Verilog-Digital-Design)
